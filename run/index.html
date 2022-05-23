@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/style-run.css">
+	<title>Test</title>
+</head>
+<body>
+
+
+	<div id="holder"></div>
+
+	<script type="text/javascript">
+		
+
+		//1. First option
+		/*
+		const URL = "https://pokeapi.co/api/v2/pokemon/ditto";
+
+		async function getDataFromApi(URL) {
+			const response = await fetch(URL);
+			var data = await response.json();
+
+			console.log(data)
+		}
+
+		getDataFromApi(URL);
+		*/
+
+
+		//2. Second option with getJSON 
+		//sprawdzic czy wyszuka nam z róznymi nazwami zmiennych
+
+		
+		//function to test other funvtions
+		function test() {
+			$.getJSON("https://pokeapi.co/api/v2/pokemon/1/", 
+				function(data) {
+					console.log(data.name);
+				});
+		}
+
+		//main function with all pokemons to show their data
+		function all() {
+			let mainDiv = document.querySelector("#holder");
+
+			$.getJSON("https://pokeapi.co/api/v2/pokemon?offset=0&limit=60",
+				function(allData) {
+					//all data
+
+
+
+					for(let i=0; i<allData.results.length; ++i) {
+						
+
+
+						$.getJSON("https://pokeapi.co/api/v2/pokemon/"+allData.results[i].name,
+							function(poke_data) {
+								console.log(poke_data);
+								//create card
+								let card = document.createElement("div");
+								card.className = "card";
+								mainDiv.appendChild(card);
+
+								//crete img
+								let img = document.createElement("img");
+								img.className = "icon";
+								img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+poke_data.id+".png";
+								card.appendChild(img);
+
+								let name = document.createElement("P");
+								name.className = "name";
+								name.innerHTML = poke_data.name+' '+poke_data.id;
+								card.appendChild(name);
+							}
+						);
+					
+					}
+			});
+		}
+
+		function name() {
+			$.getJSON("https://pokeapi.co/api/v2/pokemon/ditto", function(data) {
+					console.log("Name:",data.name);
+			});
+		}
+
+		function img() {
+			$.getJSON("https://pokeapi.co/api/v2/pokemon/ditto", function(data) {
+					let id = data.id;
+					let photo = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+id+".png";
+				
+			});	
+		}
+
+		all();
+		name();
+		img();
+
+		/*
+			NEEDED LOCATIONS IN API
+
+			1. IMG pokemon --sprites--
+
+		*/
+
+	</script>
+
+</body>
+</html>
