@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+=======
+	<img class="icon">
+
+>>>>>>> 230b427 (idea for present cards with pokemin)
 	<script type="text/javascript">
 		
 
@@ -29,6 +34,26 @@
 		//2. Second option with getJSON 
 		//sprawdzic czy wyszuka nam z róznymi nazwami zmiennych
 
+<<<<<<< HEAD
+=======
+		function name() {
+			$.getJSON("https://pokeapi.co/api/v2/pokemon/ditto", function(data) {
+				console.log("Name:",data.name);
+			});
+		}
+
+		function img() {
+			$.getJSON("https://pokeapi.co/api/v2/pokemon/ditto", function(data) {
+				let id = data.id;
+				let photo = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+id+".png";
+				
+				$(".icon").attr("src", photo);
+			});	
+		}
+
+		name();
+		img();
+>>>>>>> 230b427 (idea for present cards with pokemin)
 
 		/*
 			NEEDED LOCATIONS IN API
