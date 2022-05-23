@@ -4,7 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="style/style-run.css">
+=======
+	<style type="text/css" href="style/style-run.css"></style>
+>>>>>>> ff7785d14de55f3a2692f552f9f6cf81503a5ab2
 	<title>Test</title>
 </head>
 <body>
@@ -46,6 +50,7 @@
 		function all() {
 			let mainDiv = document.querySelector("#holder");
 
+<<<<<<< HEAD
 			$.getJSON("https://pokeapi.co/api/v2/pokemon?offset=0&limit=60",
 				function(allData) {
 					//all data
@@ -59,6 +64,16 @@
 						$.getJSON("https://pokeapi.co/api/v2/pokemon/"+allData.results[i].name,
 							function(poke_data) {
 								console.log(poke_data);
+=======
+			$.getJSON("https://pokeapi.co/api/v2/pokemon",
+				function(data) {
+					//all data
+					console.log(data);
+
+					for(let i=0; i<data.results.length; ++i) {
+						$.getJSON("https://pokeapi.co/api/v2/pokemon/"+(i+1)+'/',
+							function(data) {
+>>>>>>> ff7785d14de55f3a2692f552f9f6cf81503a5ab2
 								//create card
 								let card = document.createElement("div");
 								card.className = "card";
@@ -67,16 +82,33 @@
 								//crete img
 								let img = document.createElement("img");
 								img.className = "icon";
+<<<<<<< HEAD
 								img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+poke_data.id+".png";
+=======
+								img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+data.id+".png";
+>>>>>>> ff7785d14de55f3a2692f552f9f6cf81503a5ab2
 								card.appendChild(img);
 
 								let name = document.createElement("P");
 								name.className = "name";
+<<<<<<< HEAD
 								name.innerHTML = poke_data.name+' '+poke_data.id;
 								card.appendChild(name);
 							}
 						);
 					
+=======
+								name.innerHTML = data.name;
+								card.appendChild(name);
+
+								/*
+								//show name and id
+								console.log("Name:",data.name, "ID:",data.id);
+								console.log("");
+								*/
+							}
+						);
+>>>>>>> ff7785d14de55f3a2692f552f9f6cf81503a5ab2
 					}
 			});
 		}
