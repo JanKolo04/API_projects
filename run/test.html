@@ -1,0 +1,23 @@
+<script type="text/javascript">
+
+	//create card
+	let card = document.createElement("div");
+	card.className = "card";
+	mainDiv.appendChild(card);
+
+	//crete img
+	let img = document.createElement("img");
+	img.className = "icon";
+
+	img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+poke_data.id+".png";
+
+	img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/"+data.id+".png";
+	card.appendChild(img);
+
+	let name = document.createElement("P");
+	name.className = "name";
+
+	name.innerHTML = poke_data.name+' '+poke_data.id;
+	card.appendChild(name);
+
+</script>
