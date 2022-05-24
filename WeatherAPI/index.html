@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style-index.css">
+	<title>Strona</title>
+</head>
+<body>
+
+	<div id="holder"></div>
+
+	<script type="text/javascript">
+
+		function main() {
+			$.getJSON("http://api.weatherstack.com/current?access_key=0f78d8ed6a713d3eb1ddf3fafe60d0c0&query=Niechorze",
+				function(data) {
+					let holder = document.querySelector("#holder");
+
+					console.log(data);
+					//console.log("Location:",data.location.name);
+					//console.log("Temperature:",data.current.temperature+"°C");
+
+
+					//create placeholder for every data
+					let placeHodler = document.createElement("div");
+					placeHodler.className = "placeHolder";
+					holder.appendChild(placeHodler);
+
+					//create text for city
+					let city = document.createElement("p");
+					city.className = "city";
+					city.innerHTML = data.location.name;
+					placeHodler.appendChild(city);
+
+					//create img with weather icon
+					let img = document.createElement("img");
+					img.className = "icon";
+					img.src = data.current.weather_icons[0];
+					placeHodler.appendChild(img);
+
+					//create text for temperature
+					let temperature = document.createElement("p");
+					temperature.className = "temperature";
+					temperature.innerHTML = data.current.temperature+'°C';
+					placeHodler.appendChild(temperature);
+
+
+
+					//document.write("<img src='https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0007_fog.png'>");
+					
+				}
+			);
+		}
+
+		main();
+
+	</script>
+
+
+</body>
+</html>

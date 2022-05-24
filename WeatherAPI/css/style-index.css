@@ -1,0 +1,16 @@
+.placeHolder {
+	width: 100px;
+	padding: 20px 10px;
+	text-align: center;
+	border: none;
+	border-radius: 6px;
+	background-color: #d9d9d9;
+}
+
+.icon {
+	width: 50px;
+}
+
+.city {
+	font-weight: bold;
+}
