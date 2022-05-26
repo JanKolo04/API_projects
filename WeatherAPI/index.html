@@ -13,8 +13,8 @@
 
 	<script type="text/javascript">
 
-		function main() {
-			$.getJSON("http://api.weatherstack.com/current?access_key=0f78d8ed6a713d3eb1ddf3fafe60d0c0&query=Niechorze",
+		function main(GET_city) {
+			$.getJSON("http://api.weatherstack.com/current?access_key=0f78d8ed6a713d3eb1ddf3fafe60d0c0&query="+GET_city,
 				function(data) {
 					let holder = document.querySelector("#holder");
 
@@ -54,7 +54,17 @@
 			);
 		}
 
-		main();
+		function print_main_weather() {
+			//array with primary city to print on main page
+			let array = ["Niechorze", "New York", "Szczecin", "Pobierowo"];
+			//for loop to run main function with data from array
+			for(let i=0; i<array.length; ++i) {
+				//run function
+				main(array[i]);
+			}
+		}
+
+		print_main_weather();
 
 	</script>
 
